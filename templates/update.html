@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+  <h1> Update a selected Product</h1>
+  <form action="" method="POST" >
+    {%csrf_token%}
+    {{ product_form_variable }}
+    <input type="Submit" value="update Product"/>
+  </form>
+{% endblock %}

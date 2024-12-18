@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+  <h1>All  Product</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Code</th>
+        <th scope="col">Price</th>
+        <th scope="col">GST</th>
+        <th scope="col">Food Product</th>
+        <th scope="col">Picture</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in all_products %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{product.product_name}}</td>
+        <td>{{product.product_code}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.gst}}</td>
+        <td>{{product.is_food_product}}</td>
+        <td>
+          {% if product.picture%}
+            <img src="{{product.picture.url}}" width="200px" >
+          
+          {% else %}
+            No Picture
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'product_update' product.id %}"> 
+          <button type="button" class="btn btn-success">Update</button></a>
+        </td>
+        <td>
+          <a href="{% url 'product_delete' product.id %}">
+          <button type="button" class="btn btn-danger">Delete</button></a>
+        </td>
+        
+      </tr>
+      {% endfor%}
+          </tbody>
+  </table>
+ 
+{% endblock %}

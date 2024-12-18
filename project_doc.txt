@@ -1,0 +1,47 @@
+create venv : 
+    code: virualenv env_basic
+    or 
+    python -m venv env_basic
+----------------- 
+activate the virualenv
+
+code : 
+    source env_basic/bin/activate
+------------------ 
+install dependencies 
+
+code : 
+    pip install django 
+-------------------- 
+install django project
+
+code : django-admin startproject simple_project .
+            or 
+        python3 -m django startproject simple_project . 
+
+
+install bootstrap 
+
+
+1.  pip install django-boostrap-v5
+
+2. then add ‘bootstap5’ in installedapps in  settings.py 
+
+3. add 3 lines of code in html file head section, 
+
+{% load bootstrap5 %}
+{% bootstrap_css%}
+{% bootstrap_javascript %}
+
+
+------------- 
+
+def Products_add(request):
+    context = {
+        'product_add_con' : product_form()
+    }
+    if request.method == 'POST':
+        product_form_variable = product_form(request.POST)
+
+        if product_form_variable.is_valid(): 
+            product_form_variable.save()

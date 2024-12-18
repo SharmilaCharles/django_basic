@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}All Customers{% endblock %}
+
+{% block content %}
+  <h1>All Customers</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Since</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for customer in all_customers %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ customer.customer_name }}</td>
+        <td>{{ customer.customer_since }}</td>
+        <td>
+          <a href="{% url 'customer_update' customer.id %}"> 
+            <button type="button" class="btn btn-success">Update</button>
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'customer_delete' customer.id %}">
+            <button type="button" class="btn btn-danger">Delete</button>
+          </a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="5">No customers found.</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <img src="{% static 'assets/images/cat.jpg' %}" > 
+  <p class="text_bold"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consectetur, soluta suscipit sunt est veritatis reprehenderit neque corporis eos ea quia recusandae architecto cumque itaque explicabo quas, magni deserunt tempora?
+  </p>
+
+ 
+
+{% endblock %}
