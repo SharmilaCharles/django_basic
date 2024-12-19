@@ -78,16 +78,41 @@ WSGI_APPLICATION = "simple_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "django_basic",
+#         "USER" : 'root',
+#         "PASSWORD" : 'root1234',
+#         "HOST" : 'localhost',
+#         "PORT" : '3306'
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'django_basic',
+#         'USER': 'root',
+#         'PASSWORD': 'root1234',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+import os
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "django_basic",
-        "USER" : 'root',
-        "PASSWORD" : 'root1234',
-        "HOST" : 'localhost',
-        "PORT" : '3306'
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME', 'django_basic'),
+        'USER': os.getenv('DB_USER', 'django_user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'django_pass'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
+
 
 
 # Password validation
