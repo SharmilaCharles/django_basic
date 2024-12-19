@@ -45,3 +45,14 @@ def Products_add(request):
 
         if product_form_variable.is_valid(): 
             product_form_variable.save()
+
+
+user accounts : 
+
+admin 
+username : admin
+password : admin123
+
+user 
+username : emp1
+password : emp1
